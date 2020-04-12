@@ -10,7 +10,7 @@ Bot discord pour centraliser les FluxRSS
 * #### [Lancement du bot](https://github.com/AetherBlack/Veille-Informatique#lancement-du-bot)
 * #### [Flux RSS](https://github.com/AetherBlack/Veille-Informatique#flux-rss)
 * #### [Finalisation](https://github.com/AetherBlack/Veille-Informatique#finalisation)
-* #### [Bonus - Changement du temps entre deux vérification](https://github.com/AetherBlack/Veille-Informatique#bonus---changement-du-temps-entre-deux-v%C3%A9rification)
+* #### [Bonus - Changement du temps entre deux vérification](#bonus---changement-du-temps-entre-deux-v%C3%A9rification)
 
 ## Intro
 
