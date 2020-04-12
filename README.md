@@ -1,6 +1,19 @@
 # Veille-Informatique
 Bot discord pour centraliser les FluxRSS
 
+## Sommaire
+
+* #### [Intro](https://github.com/AetherBlack/Veille-Informatique#intro)
+* #### [Téléchargement](https://github.com/AetherBlack/Veille-Informatique#t%C3%A9l%C3%A9chargement)
+* #### [Installation des libs](https://github.com/AetherBlack/Veille-Informatique#installation-des-libs)
+* #### [Création du bot](https://github.com/AetherBlack/Veille-Informatique#cr%C3%A9ation-du-bot)
+* #### [Lancement du bot](https://github.com/AetherBlack/Veille-Informatique#lancement-du-bot)
+* #### [Flux RSS](https://github.com/AetherBlack/Veille-Informatique#flux-rss)
+* #### [Finalisation](https://github.com/AetherBlack/Veille-Informatique#finalisation)
+* #### [Bonus - Changement du temps entre deux vérification](https://github.com/AetherBlack/Veille-Informatique#bonus---changement-du-temps-entre-deux-v%C3%A9rification)
+
+## Intro
+
 Ce bot a pour but de vous aider dans la centralisation des informations contenues dans les fluxrss que vous auriez potentiellement utilisé.
 
 J'ai personnellement utilisé ce bot pour ma Veille Informatique de BTS SIO.
