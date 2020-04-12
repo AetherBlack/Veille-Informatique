@@ -41,6 +41,8 @@ LECTEUR:\PATH\TO\Python3\Scripts\pip3.exe install -r LECTEUR:\PATH\TO\PROJECT\re
 
 Rendez-vous sur le site web developer de discord : https://discordapp.com/developers/applications
 
+Connectez-vous avec votre compte ou créez en un.
+
 Créer ensuite une application. Puis rendez-vous dans la section "SETTINGS>BOT" sur le panneau de gauche.
 
 Cliquez ensuite sur "Add Bot" > "Yes, do it!". Votre bot est créé.
@@ -62,6 +64,7 @@ Une fois celui-ci copié, collé-le dans le fichier "const/__init__.py" à la pl
 ```python
 #Token
 TOKEN = "YOUR_BOT_TOKEN" #<= ICI
+#TOKEN = "Njk4ODg2OTI2NjUyMDE0NjIz.XpMXYA.zR_25AujmbkulKsIOBc-04ca9zg"
 ```
 
 Ensuite, il va falloir récupérer l'ID du channel pour que le bot envoie les notifications sur celui-ci.
@@ -76,6 +79,7 @@ from discord.ext import commands, tasks
 import sys
 
 TOKEN = "YOUR_BOT_TOKEN"
+#TOKEN = "Njk4ODg2OTI2NjUyMDE0NjIz.XpMXYA.zR_25AujmbkulKsIOBc-04ca9zg"
 
 # Prefix du bot
 bot = commands.Bot(command_prefix='!')
@@ -100,7 +104,7 @@ if __name__ == "__main__":
         print(channel[0][index].name, channel[0][index].id)
 ```
 
-Dans mon cas j'ai une catégorie nommé "Flux RSS" et un channel nommé "notifications". Je vais donc récupérer l'ID du channel "notifications".
+Dans mon cas j'ai une catégorie nommé "FluxRSS" et un channel nommé "notifications". Je vais donc récupérer l'ID du channel "notifications".
 
 Après l'exécution du script. Vous devriez avoir une liste de channel ainsi que leur id correspondant.
 
@@ -117,14 +121,15 @@ Récupérer l'id de votre channel et collé le à nouveau dans le fichier "const
 
 ```python
 #CHANNEL FLUX RSS -> NOTIF ID
-CHANNEL_RSS = INT_CHANNEL # <= ICI 
+CHANNEL_RSS = INT_CHANNEL # <= ICI
+#CHANNEL_RSS = 698887787075862559
 ```
 
 ## Flux RSS
 
 Maintenant que votre bot est quasi fonctionnement il ne vous reste plus qu'à mettre vos lien de fluxrss dans la variable FLUX_RSS toujours dans le fichier "const/__init__.py" :
 
-*Les liens sont des fluxrss de Google Alertes pour le WPA-3 à titre d'exemple*
+*Les liens ci-dessous sont des fluxrss de Google Alertes pour le WPA-3 à titre d'exemple*
 ```python
 #Flux RSS
 FLUX_RSS = ["https://www.google.com/alerts/feeds/10044275366631447452/1055738863244347746",
