@@ -3,14 +3,48 @@ Bot discord pour centraliser les FluxRSS
 
 ## Sommaire
 
-* #### [Intro](https://github.com/AetherBlack/Veille-Informatique#intro)
-* #### [Téléchargement](https://github.com/AetherBlack/Veille-Informatique#t%C3%A9l%C3%A9chargement)
-* #### [Installation des libs](https://github.com/AetherBlack/Veille-Informatique#installation-des-libs)
-* #### [Création du bot](https://github.com/AetherBlack/Veille-Informatique#cr%C3%A9ation-du-bot)
-* #### [Lancement du bot](https://github.com/AetherBlack/Veille-Informatique#lancement-du-bot)
-* #### [Flux RSS](https://github.com/AetherBlack/Veille-Informatique#flux-rss)
-* #### [Finalisation](https://github.com/AetherBlack/Veille-Informatique#finalisation)
-* #### [Bonus - Changement du temps entre deux vérification](#bonus---changement-du-temps-entre-deux-v%C3%A9rification)
+<ul>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#intro">Intro</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#t%C3%A9l%C3%A9chargement">Téléchargement</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#installation-des-libs">Installation des libs</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#cr%C3%A9ation-du-bot">Création du bot</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#lancement-du-bot">Lancement du bot</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#flux-rss">Flux RSS</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#finalisation">Finalisation</a>
+		</h4>
+	<li>
+	<li>
+		<h4>
+			<a href="https://github.com/AetherBlack/Veille-Informatique#bonus---changement-du-temps-entre-deux-v%C3%A9rification">Bonus - Changement du temps entre deux vérification</a>
+		</h4>
+	<li>
+<ul>
 
 ## Intro
 
