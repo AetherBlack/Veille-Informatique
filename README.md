@@ -3,48 +3,14 @@ Bot discord pour centraliser les FluxRSS
 
 ## Sommaire
 
-<ul>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#intro">Intro</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#t%C3%A9l%C3%A9chargement">Téléchargement</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#installation-des-libs">Installation des libs</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#cr%C3%A9ation-du-bot">Création du bot</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#lancement-du-bot">Lancement du bot</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#flux-rss">Flux RSS</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#finalisation">Finalisation</a>
-		</h4>
-	<li>
-	<li>
-		<h4>
-			<a href="https://github.com/AetherBlack/Veille-Informatique#bonus---changement-du-temps-entre-deux-v%C3%A9rification">Bonus - Changement du temps entre deux vérification</a>
-		</h4>
-	<li>
-<ul>
+* #### [Intro](https://github.com/AetherBlack/Veille-Informatique#user-content-intro-1)
+* #### [Téléchargement](https://github.com/AetherBlack/Veille-Informatique#user-content-téléchargement-1)
+* #### [Installation des libs](https://github.com/AetherBlack/Veille-Informatique#user-content-installation-des-libs-1)
+* #### [Création du bot](https://github.com/AetherBlack/Veille-Informatique#user-content-création-du-bot-1)
+* #### [Lancement du bot](https://github.com/AetherBlack/Veille-Informatique#user-content-lancement-du-bot-1)
+* #### [Flux RSS](https://github.com/AetherBlack/Veille-Informatique#user-content-flux-rss-1)
+* #### [Finalisation](https://github.com/AetherBlack/Veille-Informatique#user-content-finalisation-1)
+* #### [Bonus - Changement du temps entre deux vérification](https://github.com/AetherBlack/Veille-Informatique#user-content-bonus---changement-du-temps-entre-deux-vérification-1)
 
 ## Intro
 
