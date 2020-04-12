@@ -87,7 +87,7 @@ Premièrement depuis la section "SETTINGS>BOT" sur le portail developers de disc
 
 <img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/19.PNG">
 
-Une fois celui-ci copié, collé-le dans le fichier "const/__init__.py" à la place de "YOUR_BOT_TOKEN".
+Une fois celui-ci copié, collé-le dans le fichier ```const/__init__.py``` à la place de "YOUR_BOT_TOKEN".
 
 ```python
 #Token
@@ -147,7 +147,7 @@ notifications 333333333333333333
 
 <img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/20.PNG">
 
-Récupérer l'id de votre channel et collé le à nouveau dans le fichier "const/__init__.py" à la variable "CHANNEL_RSS" :
+Récupérer l'id de votre channel et collé le à nouveau dans le fichier ```const/__init__.py``` à la variable "CHANNEL_RSS" :
 
 ```python
 #CHANNEL FLUX RSS -> NOTIF ID
@@ -157,7 +157,7 @@ CHANNEL_RSS = INT_CHANNEL # <= ICI
 
 ## Flux RSS
 
-Maintenant que votre bot est quasi fonctionnement il ne vous reste plus qu'à mettre vos lien de fluxrss dans la variable FLUX_RSS toujours dans le fichier "const/__init__.py" :
+Maintenant que votre bot est quasi fonctionnement il ne vous reste plus qu'à mettre vos lien de fluxrss dans la variable FLUX_RSS toujours dans le fichier ```const/__init__.py``` :
 
 *Les liens ci-dessous sont des fluxrss de Google Alertes pour le WPA-3 à titre d'exemple*
 ```python
@@ -202,5 +202,15 @@ Logged in as Veille Informatique
 ```
 
 <img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/22.PNG">
+
+## Bonus - Changement du temps entre deux vérification
+
+Le bot vérifie par défaut toute les heures s'il y a des nouvelles news.
+
+Pour changer cette valeur, modifier la variable "WAIT_NEW_NEWS" dans le fichier ```const/__init__.py```
+
+```python
+WAIT_NEW_NEWS = 60 * 60#Each hours
+```
 
 Si vous avez des questions ou que vous rencontrez des problèmes, contactez moi à : AetherSama@protonmail.com
