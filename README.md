@@ -43,21 +43,49 @@ Rendez-vous sur le site web developer de discord : https://discordapp.com/develo
 
 Connectez-vous avec votre compte ou créez en un.
 
-Créer ensuite une application. Puis rendez-vous dans la section "SETTINGS>BOT" sur le panneau de gauche.
+Créer ensuite une application. 
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/1.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/2.PNG">
+
+Puis rendez-vous dans la section "SETTINGS>BOT" sur le panneau de gauche.
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/3.PNG">
 
 Cliquez ensuite sur "Add Bot" > "Yes, do it!". Votre bot est créé.
 
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/4.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/5.PNG">
+
 Il faut maintenant créer le serveur. Depuis l'application discord sur le panneau de gauche : "Add a server" > "Create a server" > "Nom de votre serveur" > "Create". Au passage créer un channel spécifique si vous avez besoin.
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/6.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/7.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/8.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/9.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/10.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/11.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/12.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/13.PNG">
 
 Lancez ensuite le lien suivant en remplacement YOUR_CLIENT_ID_HERE dans votre URL par votre CLIENT ID qui se situe sur la page developer de discord toujours sur la partie gauche "SETTINGS>General Information" : https://discordapp.com/oauth2/authorize?client_id=YOUR_CLIENT_ID_HERE&scope=bot&permissions=536083519
 
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/14.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/15.PNG">
+
 Le site va alors vous demander de vous authentifiez. Si vous êtes déjà authentifié avec votre compte alors sélectionné votre serveur dans la liste déroulante "ADD BOT TO:" puis "Continue". Laissez lui tous les droits et enfin faite "Authorize". Validez le captcha et votre bot sera sur votre serveur.
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/16.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/17.PNG">
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/18.PNG">
 
 ## Lancement du bot
 
 Pour que le bot fonctionne il va falloir modifier deux valeurs.
 
 Premièrement depuis la section "SETTINGS>BOT" sur le portail developers de discord récupéré le TOKEN de votre bot.
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/19.PNG">
 
 Une fois celui-ci copié, collé-le dans le fichier "const/__init__.py" à la place de "YOUR_BOT_TOKEN".
 
@@ -117,6 +145,8 @@ Flux RSS 222222222222222222
 notifications 333333333333333333
 ```
 
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/20.PNG">
+
 Récupérer l'id de votre channel et collé le à nouveau dans le fichier "const/__init__.py" à la variable "CHANNEL_RSS" :
 
 ```python
@@ -157,6 +187,8 @@ Logged in as Veille Informatique
 ------------------
 ```
 
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/21.PNG">
+
 Vous pouvez le laisser tourné h24 sur un raspberry ou alors le lancer quand cela vous chantes. Libre à vous.
 
 Sous Linux vous pouvez mettre l'éxécution du script en tâche de fond en ajout le caractère "&" à la fin de votre commande :
@@ -168,5 +200,7 @@ Logged in as Veille Informatique
 686300298574168078
 ------------------
 ```
+
+<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/22.PNG">
 
 Si vous avez des questions ou que vous rencontrez des problèmes, contactez moi à : AetherSama@protonmail.com
