@@ -226,4 +226,4 @@ Pour changer cette valeur, modifier la variable "WAIT_NEW_NEWS" dans le fichier 
 WAIT_NEW_NEWS = 60 * 60#Each hours
 ```
 
-Si vous avez des questions ou que vous rencontrez des problèmes, contactez moi à : AetherSama@protonmail.com
+Si vous avez des questions ou que vous rencontrez des problèmes, contactez moi à : yohan.fevre@protonmail.com
