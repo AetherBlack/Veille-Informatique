@@ -98,7 +98,7 @@ Pour que le bot fonctionne il va falloir modifier deux valeurs.
 
 Premièrement depuis la section "SETTINGS>BOT" sur le portail developers de discord récupéré le TOKEN de votre bot.
 
-<img src="https://github.com/AetherBlack/Veille-Informatique/blob/master/image/19.PNG">
+![](https://github.com/AetherBlack/Veille-Informatique/blob/master/image/19.PNG)
 
 Une fois celui-ci copié, collé-le dans le fichier ```const/__init__.py``` à la place de "YOUR_BOT_TOKEN".
 
@@ -149,7 +149,7 @@ Dans mon cas j'ai une catégorie nommé "FluxRSS" et un channel nommé "notifica
 
 Après l'exécution du script. Vous devriez avoir une liste de channel ainsi que leur id correspondant.
 
-*Les ID si dessous sont à titre d'exemple*
+*Les ID ci-dessous sont à titre d'exemple*
 ```
 Logged in as Veille Informatique
 111111111111111111
@@ -192,7 +192,7 @@ FLUX_RSS = ["REPLACE_WITH_RSS_LINK",
 
 Une fois cela fait il reste plus qu'à lancer votre bot discord.
 
-```
+```bash
 $ python3 main.py
 
 Logged in as Veille Informatique
@@ -206,8 +206,8 @@ Vous pouvez le laisser tourné h24 sur un raspberry ou alors le lancer quand cel
 
 Sous Linux vous pouvez mettre l'éxécution du script en tâche de fond en ajout le caractère "&" à la fin de votre commande :
 
-```
-$ python3 main.py &
+```bash
+$ nohup python3 main.py &
 
 Logged in as Veille Informatique
 686300298574168078
@@ -218,9 +218,9 @@ Logged in as Veille Informatique
 
 ## Bonus - Changement du temps entre deux vérification
 
-Le bot vérifie par défaut toute les heures s'il y a des nouvelles news.
+Le bot vérifie par défaut toutes les heures s'il y a des nouvelles news.
 
-Pour changer cette valeur, modifier la variable "WAIT_NEW_NEWS" dans le fichier ```const/__init__.py```
+Pour changer cette valeur, modifier la variable `WAIT_NEW_NEWS` dans le fichier ```const/__init__.py```
 
 ```python
 WAIT_NEW_NEWS = 60 * 60#Each hours
