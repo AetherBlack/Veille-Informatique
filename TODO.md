@@ -8,6 +8,14 @@ Refaire au propre le readme.md
 
 Tester le code avant la sortie de la v1.
 
+### const
+
+Push le nouveau format du fichier `__init__.py` dans le dossier `const`.
+
+#### readme.md
+
+Ajout d'explication dans le readme.md pour le format et les nouvelles fonctionnalités modifiables.
+
 ## Nettoyage de la BDD
 
 Nettoyage de la BDD une fois par jour. Heure à définir.
