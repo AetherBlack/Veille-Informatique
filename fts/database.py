@@ -3,7 +3,8 @@ import sqlite3
 import os
 
 from const import SQLITE_CREATE_DATABASE, \
-    SQLITE_SELECT_NEWS_EXISTS, SQLITE_INSERT_NEWS
+    SQLITE_SELECT_NEWS_EXISTS, SQLITE_INSERT_NEWS, \
+        SQLITE_DELETE_NEWS
 
 class Database:
 
@@ -103,6 +104,23 @@ class Database:
 
         # Execute the query
         cursor.execute(SQLITE_INSERT_NEWS, args)
+
+        # Close connection
+        self.CloseDatabase(conn)
+    
+
+    def DeleteEntries(self, root, name):
+        """
+        @param => str: `root`: root name set by the user in const.
+        @param => str: `name`: name of the subsection set by the user in const.
+        """
+        # Arguments
+        args = tuple(locals().values())[1:]
+        # Connect to the database
+        conn, cursor = self.ConnectDatabase()
+
+        # Execute the query
+        cursor.execute(SQLITE_DELETE_NEWS, args)
 
         # Close connection
         self.CloseDatabase(conn)
