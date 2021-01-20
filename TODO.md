@@ -1,9 +1,5 @@
 # Veille Informatique
 
-## readme.md
-
-Refaire au propre le readme.md
-
 ## V1 !
 
 Tester le code avant la sortie de la v1.
@@ -18,7 +14,7 @@ Push le nouveau format du fichier `__init__.py` dans le dossier `const`.
 
 #### readme.md
 
-Ajout d'explication dans le readme.md pour le format et les nouvelles fonctionnalités modifiables.
+Ajout d'explication dans le readme.md pour le format et les nouvelles fonctionnalités modifiables. Mise à jour des anciennes explications.
 
 ## Fonctionnalités
 
