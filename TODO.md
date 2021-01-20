@@ -20,10 +20,6 @@ Push le nouveau format du fichier `__init__.py` dans le dossier `const`.
 
 Ajout d'explication dans le readme.md pour le format et les nouvelles fonctionnalités modifiables.
 
-## Nettoyage de la BDD
-
-Nettoyage de la BDD une fois par jour. Heure à définir.
-
 ## Fonctionnalités
 
 ### Nettoyage de la base de données
