@@ -70,7 +70,7 @@ class Database:
         @param => str: `link`: Link of the news.
         """
         # Arguments
-        args = (title, hash_description, link, )
+        args = tuple(locals().values())
         # Connect to the database
         conn, cursor = self.ConnectDatabase()
 
@@ -95,7 +95,7 @@ class Database:
         @param => str: `link`: link of the news.
         """
         # Arguments
-        args = (root, name, title, hash_description, link,)
+        args = tuple(locals().values())
         # Connect to the database
         conn, cursor = self.ConnectDatabase()
 
