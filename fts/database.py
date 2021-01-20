@@ -62,7 +62,7 @@ class Database:
         self.CloseDatabase(conn)
 
 
-    def isNewsExists(self, title, hash_description, link):
+    def isNewsExists(self, root, name, title, hash_description, link):
         """
         Return true if the news exists
         @param => str: `title`: Title of the news.
@@ -70,12 +70,14 @@ class Database:
         @param => str: `link`: Link of the news.
         """
         # Arguments
-        args = tuple(locals().values())
+        args = tuple(locals().values())[1:]
         # Connect to the database
         conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        result = cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
+        cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
+        # Get the response
+        result = cursor.fetchone()
 
         # Close connection
         self.CloseDatabase(conn)
@@ -95,7 +97,7 @@ class Database:
         @param => str: `link`: link of the news.
         """
         # Arguments
-        args = tuple(locals().values())
+        args = tuple(locals().values())[1:]
         # Connect to the database
         conn, cursor = self.ConnectDatabase()
 

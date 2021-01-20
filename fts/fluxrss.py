@@ -78,7 +78,7 @@ class FluxRSS:
         return dict_news
 
 
-    def is_new(self, title, description, link):
+    def is_new(self, root, name, title, description, link):
         """
         Return True if the news in the feed is new.
         @param => str: `title`: Title of the news.
@@ -88,7 +88,7 @@ class FluxRSS:
         # Hash description
         hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
         # Return the check of the query
-        return self.database.isNewsExists(title, link, hash_description)
+        return self.database.isNewsExists(root, name, title, link, hash_description)
 
 
     def embeded_msg(self, name, title, content, link):
@@ -155,7 +155,7 @@ class FluxRSS:
                             link = value[2]
 
                             # Check if the news is new
-                            if not self.is_new(title, description, link):
+                            if self.is_new(root, name, title, description, link):
                                 # Hash the description
                                 hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
                                 # write the news into the database

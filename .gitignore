@@ -1,1 +1,3 @@
 const/
+__pycache__
+db
