@@ -124,10 +124,7 @@ class FluxRSS:
         # Show const for the format
         self.json_rss = json_rss
 
-        #Get the name file
-        #self.file = urlparse(self.url).path.split("/")[-1]
-        #self.file = os.path.join(self.feedrss_path, self.file)
-
+        # While the connection is not closed
         while not self.bot.is_closed():
 
             # For each key
