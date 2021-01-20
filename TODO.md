@@ -18,10 +18,6 @@ Ajout d'explication dans le readme.md pour le format et les nouvelles fonctionna
 
 ## Fonctionnalités
 
-### Nettoyage de la base de données
-
-Ajouter un champ dans le JSON avec une durée à laquelle la base de données sera nettoyé.
-
 ### Parser custom
 
 Mise en place de parser custom via un fichier de config. Utilisable avec bs4.

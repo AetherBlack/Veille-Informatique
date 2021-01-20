@@ -12,6 +12,7 @@ import os
 from const import CHANNEL_RSS, WAIT_UNTIL_NEW_CHECK, \
     SQLITE_FOLDER_NAME, SQLITE_FILE_NAME
 from fts.database import Database
+from fts.cleandatabase import CleanDatabase
 
 class FluxRSS:
 
@@ -134,10 +135,23 @@ class FluxRSS:
                 root = key
 
                 # For each sections
-                for section in sections:
+                for index_section, section in enumerate(sections):
 
                     # Get the name of the section
                     name = section["name"]
+
+                    # Get the time until the cleaning of the database for the root and name given
+                    wait_time = section["clean"]
+
+                    # Check if the cleaning database is already launched
+                    if isinstance(wait_time, str):
+
+                        # Launch the function to clean the database
+                        Thread = CleanDatabase(root, name, wait_time, self.db_path, SQLITE_FILE_NAME)
+                        Thread.start()
+
+                        # Change the variable type of the clean line in json_rss to launch relaunch the requests
+                        self.json_rss[root][index_section]["clean"] = True
 
                     # For each link in the section
                     for link in section["link"]:
