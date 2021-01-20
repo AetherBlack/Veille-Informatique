@@ -86,14 +86,16 @@ class Database:
         return True
 
 
-    def AddNews(self, name, title, hash_description, link):
+    def AddNews(self, root, name, title, hash_description, link):
         """
+        @param => str: `root`: root name set in const.
+        @param => str: `name`: Name set in const.
         @param => str: `title`: Title of the news.
         @param => str: `hash_description`: sha256 hexdigest of the description.
         @param => str: `link`: link of the news.
         """
         # Arguments
-        args = (name, title, hash_description, link,)
+        args = (root, name, title, hash_description, link,)
         # Connect to the database
         conn, cursor = self.ConnectDatabase()
 

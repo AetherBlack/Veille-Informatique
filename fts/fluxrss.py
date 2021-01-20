@@ -133,6 +133,9 @@ class FluxRSS:
             # For each key
             for key, sections in self.json_rss.items():
 
+                # Get the root name set in const
+                root = key
+
                 # For each sections
                 for section in sections:
 
@@ -159,7 +162,7 @@ class FluxRSS:
                                 # Hash the description
                                 hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
                                 # write the news into the database
-                                self.database.AddNews(name, title, hash_description, link)
+                                self.database.AddNews(root, name, title, hash_description, link)
                                 #Create the discord message
                                 message = self.embeded_msg(name, title, description, link)
                                 #Send to discord
