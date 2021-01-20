@@ -88,7 +88,7 @@ class FluxRSS:
         # Hash description
         hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
         # Return the check of the query
-        return self.database.isNewsExists(root, name, title, link, hash_description)
+        return not self.database.isNewsExists(root, name, title, hash_description, link)
 
 
     def embeded_msg(self, name, title, content, link):

@@ -8,6 +8,10 @@ Refaire au propre le readme.md
 
 Tester le code avant la sortie de la v1.
 
+### Code
+
+Revoir les commentaires des fonctions
+
 ### const
 
 Push le nouveau format du fichier `__init__.py` dans le dossier `const`.
