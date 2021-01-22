@@ -25,5 +25,7 @@ async def on_ready():
 if __name__ == "__main__":
     bot.run(TOKEN)
     
-    for index in range(len(channel[0])):
-        print(channel[0][index].name, channel[0][index].id)
+    for index, guild in enumerate(channel):
+        print("[+] Guild {0}".format(index))
+        for value in guild:
+            print("\t", value.name, value.id)
