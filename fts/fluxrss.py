@@ -92,7 +92,7 @@ class FluxRSS:
         return not self.database.isNewsExists(root, name, title, hash_description, link)
 
 
-    def embeded_msg(self, root, name, title, content, link):
+    def embeded_msg(self, root, name, title, content, link, color):
         """
         Create the embeded message and send it to discord.
         @param => str: `root`: Name of the Website.
@@ -100,9 +100,10 @@ class FluxRSS:
         @param => str: `title`: Title of the news.
         @param => str: `content`: Content description of the news.
         @param => str: `link`: Link of the news.
+        @param => discord.Color: `color`: Color for the left panel.
         """
         # Set the Name, description and color on the left
-        news = discord.Embed(title="{0} {1}".format(root, name), description="News :", color=0x00ff00)
+        news = discord.Embed(title="{0} - {1}".format(root, name), description="News :", color=(color or 0x00ff00))
 
         #Set bot name and profil picture
         news.set_author(name=self.bot_username, icon_url=self.bot.user.avatar_url)
@@ -137,6 +138,16 @@ class FluxRSS:
 
                 # For each sections
                 for index_section, section in enumerate(sections):
+
+                    # Check customization of the section
+                    if "custom" in list(section.keys()):
+                        # Check color
+                        if "color" in list(section["custom"].keys()):
+                            color = getattr(discord.Color, section["custom"]["color"])()
+                        else:
+                            color = False
+                    else:
+                        color = False
 
                     # Get the name of the section
                     name = section["name"]
@@ -176,7 +187,7 @@ class FluxRSS:
                                 # write the news into the database
                                 self.database.AddNews(root, name, title, hash_description, link)
                                 #Create the discord message
-                                message = self.embeded_msg(root, name, title, description, link)
+                                message = self.embeded_msg(root, name, title, description, link, color)
                                 #Send to discord
                                 await self.rss_channel.send(embed=message)
 

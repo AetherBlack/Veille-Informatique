@@ -42,7 +42,10 @@ JSON_RSS = {
     {
       "name": "CERT-FR",
       "description": "Rapport du CERT-FR",
-      "clean": "365d",
+      "clean": False,
+      "custom": {
+        "color": "red"
+      },
       "link": [
         "https://www.cert.ssi.gouv.fr/feed/"
       ]
