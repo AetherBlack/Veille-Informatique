@@ -63,7 +63,7 @@ class FluxRSS:
             # Get the title
             title = parser[index]["title"]
             # Get the description
-            description = parser[index]["content"][0]["value"]
+            description = parser[index]["description"]
             # Get the link
             link = parser[index]["links"][0]["href"]
 
