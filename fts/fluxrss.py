@@ -92,23 +92,24 @@ class FluxRSS:
         return not self.database.isNewsExists(root, name, title, hash_description, link)
 
 
-    def embeded_msg(self, name, title, content, link):
+    def embeded_msg(self, root, name, title, content, link):
         """
         Create the embeded message and send it to discord.
+        @param => str: `root`: Name of the Website.
         @param => str: `name`: Name set in const. Categorie of the news
         @param => str: `title`: Title of the news.
         @param => str: `content`: Content description of the news.
         @param => str: `link`: Link of the news.
         """
         # Set the Name, description and color on the left
-        news = discord.Embed(title=name, description="News :", color=0x00ff00)
+        news = discord.Embed(title="{0} {1}".format(root, name), description="News :", color=0x00ff00)
 
         #Set bot name and profil picture
         news.set_author(name=self.bot_username, icon_url=self.bot.user.avatar_url)
 
         #Set the description and the link for the main message
         content = content + "\n" + link
-        news.add_field(name=title, value=content, inline=False)
+        news.add_field(name=title, value=content[:1024], inline=False)
 
         #Show the bot username in footer
         news.set_footer(text="Generate by @{0}".format(self.bot_username))
@@ -175,7 +176,7 @@ class FluxRSS:
                                 # write the news into the database
                                 self.database.AddNews(root, name, title, hash_description, link)
                                 #Create the discord message
-                                message = self.embeded_msg(name, title, description, link)
+                                message = self.embeded_msg(root, name, title, description, link)
                                 #Send to discord
                                 await self.rss_channel.send(embed=message)
 
