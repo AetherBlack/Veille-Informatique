@@ -140,9 +140,9 @@ class FluxRSS:
                 for index_section, section in enumerate(sections):
 
                     # Check customization of the section
-                    if "custom" in list(section.keys()):
+                    if "custom" in section.keys():
                         # Check color
-                        if "color" in list(section["custom"].keys()):
+                        if "color" in section["custom"].keys():
                             color = getattr(discord.Color, section["custom"]["color"])()
                         else:
                             color = False
