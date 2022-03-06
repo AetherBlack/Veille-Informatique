@@ -59,51 +59,51 @@ Connectez-vous avec votre compte ou créez en un.
 
 Créez ensuite une application. 
 
-![New Application](image/1.PNG)
+![New Application](docs/image/1.PNG)
 
-![Create an Application](image/2.PNG)
+![Create an Application](docs/image/2.PNG)
 
 Puis rendez-vous dans la section `SETTINGS>BOT` sur le panneau de gauche.
 
-![Bot](image/3.PNG)
+![Bot](docs/image/3.PNG)
 
 Cliquez ensuite sur `Add Bot` > `Yes, do it!`. Votre bot est créé.
 
-![Add Bot](image/4.PNG)
+![Add Bot](docs/image/4.PNG)
 
-![Add bot to this app](image/5.PNG)
+![Add bot to this app](docs/image/5.PNG)
 
 Il faut maintenant créer le serveur. Depuis l'application discord sur le panneau de gauche : `Add a server` > `Create a server` > `Nom de votre serveur` > `Create`. Au passage créez un channel spécifique si vous en avez besoin.
 
-![Add a Server](image/6.PNG)
+![Add a Server](docs/image/6.PNG)
 
-![Create a Server](image/7.PNG)
+![Create a Server](docs/image/7.PNG)
 
-![Create your Server](image/8.PNG)
+![Create your Server](docs/image/8.PNG)
 
-![Name's Server](image/9.PNG)
+![Name's Server](docs/image/9.PNG)
 
-![Create Category](image/10.PNG)
+![Create Category](docs/image/10.PNG)
 
-![Create Channel](image/11.PNG)
+![Create Channel](docs/image/11.PNG)
 
-![Create text Channel](image/12.PNG)
+![Create text Channel](docs/image/12.PNG)
 
-![Name's Server](image/13.PNG)
+![Name's Server](docs/image/13.PNG)
 
 Lancez ensuite le lien suivant en remplacement `YOUR_CLIENT_ID_HERE` dans votre URL par votre `CLIENT ID` qui se situe sur la page developer de discord toujours sur la partie gauche `SETTINGS>General Information` : <https://discordapp.com/oauth2/authorize?client_id=YOUR_CLIENT_ID_HERE&scope=bot&permissions=536083519>
 
-![Client ID](image/14.PNG)
+![Client ID](docs/image/14.PNG)
 
-![URL](image/15.PNG)
+![URL](docs/image/15.PNG)
 
 Le site va alors vous demander de vous authentifiez. Si vous êtes déjà authentifié avec votre compte, alors sélectionné votre serveur dans la liste déroulante `ADD BOT TO:` puis `Continue`. Laissez lui tous les droits et enfin faites `Authorize`. Validez le captcha et votre bot sera sur votre serveur.
 
-![Add bot to](image/16.PNG)
+![Add bot to](docs/image/16.PNG)
 
-![Add right](image/17.PNG)
+![Add right](docs/image/17.PNG)
 
-![Authorized](image/18.PNG)
+![Authorized](docs/image/18.PNG)
 
 ## Lancement du bot
 
@@ -111,7 +111,7 @@ Pour que le bot fonctionne il va falloir modifier deux valeurs.
 
 Premièrement depuis la section `SETTINGS>BOT` sur le portail developers de discord récupéré le TOKEN de votre bot.
 
-![Token](image/19.PNG)
+![Token](docs/image/19.PNG)
 
 Une fois celui-ci copié, collé-le dans le fichier `const/__init__.py` à la place de `YOUR_BOT_TOKEN`.
 
@@ -142,7 +142,7 @@ Flux RSS 222222222222222222
 notifications 333333333333333333
 ```
 
-![Code and Channel ID](image/20.PNG)
+![Code and Channel ID](docs/image/20.PNG)
 
 Récupérez l'id de votre channel et collé le à nouveau dans le fichier `const/__init__.py` à la place de la variable "CHANNEL_RSS" :
 
@@ -184,7 +184,7 @@ Logged in as Veille Informatique
 ------------------
 ```
 
-![Bot Launched](image/21.PNG)
+![Bot Launched](docs/image/21.PNG)
 
 Vous pouvez le laisser tourné h24 sur un raspberry ou alors le lancer quand cela vous chantes. Libre à vous.
 
@@ -198,7 +198,7 @@ Logged in as Veille Informatique
 ------------------
 ```
 
-![Notifications](image/22.PNG)
+![Notifications](docs/image/22.PNG)
 
 ## Bonus - Changement du temps entre deux vérifications
 
@@ -210,4 +210,4 @@ Pour changer cette valeur, modifier la variable `WAIT_NEW_NEWS` dans le fichier 
 WAIT_NEW_NEWS = 60 * 60#Each hours
 ```
 
-Si vous avez des questions ou que vous rencontrez des problèmes, contactez moi à : yohan.fevre@protonmail.com
+Vous pouvez ouvrir un ticket, si vous avez des questions ou que vous rencontrez des problèmes.
