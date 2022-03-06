@@ -13,6 +13,7 @@ from const import CHANNEL_RSS, WAIT_UNTIL_NEW_CHECK, \
     SQLITE_FOLDER_NAME, SQLITE_FILE_NAME
 from fts.database import Database
 from fts.cleandatabase import CleanDatabase
+from fts.RSS import RSS
 
 class FluxRSS:
 
@@ -117,6 +118,19 @@ class FluxRSS:
 
         # Return the final Discord embeded message
         return news
+    
+
+    def check_news(self, root: str, name: str, title: str, description: str, link: str) -> bool:
+        """
+        Return True if the news in good.
+        @param => str: `root`: Name of the Website.
+        @param => str: `name`: Name set in const. Categorie of the news
+        @param => str: `title`: Title of the news.
+        @param => str: `description`: Description of the news.
+        @param => str: `link`: Link of the rss feed.
+        """
+        # Check if the news is new
+        is_news_new = self.is_new(root, name, title, description, link)
 
 
     async def feedrss(self, json_rss):
@@ -133,40 +147,24 @@ class FluxRSS:
             # For each key
             for key, sections in self.json_rss.items():
 
-                # Get the root name set in const
-                root = key
-
                 # For each sections
                 for index_section, section in enumerate(sections):
 
-                    # Check customization of the section
-                    if "custom" in section.keys():
-                        # Check color
-                        if "color" in section["custom"].keys():
-                            color = getattr(discord.Color, section["custom"]["color"])()
-                        else:
-                            color = False
-                    else:
-                        color = False
-
-                    # Get the name of the section
-                    name = section["name"]
-
-                    # Get the time until the cleaning of the database for the root and name given
-                    wait_time = section["clean"]
+                    # Get class for RSS
+                    rssSection = RSS(key, section)
 
                     # Check if the cleaning database is already launched
-                    if isinstance(wait_time, str):
+                    if isinstance(rssSection.wait_time, str):
 
                         # Launch the function to clean the database
-                        Thread = CleanDatabase(root, name, wait_time, self.db_path, SQLITE_FILE_NAME)
+                        Thread = CleanDatabase(rssSection.root, rssSection.name, rssSection.wait_time, self.db_path, SQLITE_FILE_NAME)
                         Thread.start()
 
                         # Change the variable type of the clean line in json_rss to launch relaunch the requests
-                        self.json_rss[root][index_section]["clean"] = True
+                        self.json_rss[rssSection.root][index_section]["clean"] = True
 
                     # For each link in the section
-                    for link in section["link"]:
+                    for link in rssSection.link:
 
                         # Get title, description and link in a dict
                         dict_news = self.get_news(link)
@@ -181,13 +179,13 @@ class FluxRSS:
                             link = value[2]
 
                             # Check if the news is new
-                            if self.is_new(root, name, title, description, link):
+                            if self.is_new(rssSection.root, rssSection.name, title, description, link):
                                 # Hash the description
                                 hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
                                 # write the news into the database
-                                self.database.AddNews(root, name, title, hash_description, link)
+                                self.database.AddNews(rssSection.root, rssSection.name, title, hash_description, link)
                                 #Create the discord message
-                                message = self.embeded_msg(root, name, title, description, link, color)
+                                message = self.embeded_msg(rssSection.root, rssSection.name, title, description, link, rssSection.color)
                                 #Send to discord
                                 await self.rss_channel.send(embed=message)
 
