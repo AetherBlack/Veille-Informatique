@@ -49,6 +49,30 @@ JSON_RSS = {
       "link": [
         "https://www.cert.ssi.gouv.fr/feed/"
       ]
+    },
+    {
+      "name": "CERT-FR",
+      "description": "Rapport du CERT-FR pour Microsoft",
+      "clean": False,
+      "custom": {
+        "color": "red",
+        "filter": {
+          "title": {
+            "in": ["CERTFR-", "Microsoft"],
+            "not in": ["Edge"],
+            "match": [".*CERTFR-[0-9]{4}AVI.*Microsoft"]
+          },
+          "description": {
+            "in": ["Microsoft"],
+          },
+          "link": {
+            "not in": ["http://"],
+          }
+        }
+      },
+      "link": [
+        "https://www.cert.ssi.gouv.fr/feed/"
+      ]
     }
   ]
 }
