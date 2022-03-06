@@ -2,6 +2,7 @@
 import sqlite3
 import os
 
+from fts.Utils import database_invoke
 from const import SQLITE_CREATE_DATABASE, \
     SQLITE_SELECT_NEWS_EXISTS, SQLITE_INSERT_NEWS, \
         SQLITE_DELETE_NEWS
@@ -33,36 +34,34 @@ class Database:
         """
         Connect to the database and set a cursor
         """
-        conn = sqlite3.connect(self.full_path)
-        cursor = conn.cursor()
-        return conn, cursor
+        self.conn = sqlite3.connect(self.full_path)
+        self.cursor = self.conn.cursor()
 
 
-    def CloseDatabase(self, conn):
+    def CloseDatabase(self):
         """
         Commit and close connection to the database
         """
         # Save the changes
-        conn.commit()
+        self.conn.commit()
 
         # Close the connection
-        conn.close()
+        self.conn.close()
+
+        # Unset variable
+        self.conn, self.cursor = None, None
 
 
+    @database_invoke
     def CreateDatabase(self):
         """
         Create the database using the full_path variable
         """
-        # Get connection and cursor 
-        conn, cursor = self.ConnectDatabase()
-
         # Create table
-        cursor.execute(SQLITE_CREATE_DATABASE)
-
-        # Close the connection
-        self.CloseDatabase(conn)
+        self.cursor.execute(SQLITE_CREATE_DATABASE)
 
 
+    @database_invoke
     def isNewsExists(self, root, name, title, hash_description, link):
         """
         Return true if the news exists
@@ -72,16 +71,11 @@ class Database:
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
+        self.cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
         # Get the response
-        result = cursor.fetchone()
-
-        # Close connection
-        self.CloseDatabase(conn)
+        result = self.cursor.fetchone()
 
         # Check the result
         if result is None:
@@ -89,6 +83,7 @@ class Database:
         return True
 
 
+    @database_invoke
     def AddNews(self, root, name, title, hash_description, link):
         """
         @param => str: `root`: root name set in const.
@@ -99,16 +94,12 @@ class Database:
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_INSERT_NEWS, args)
-
-        # Close connection
-        self.CloseDatabase(conn)
+        self.cursor.execute(SQLITE_INSERT_NEWS, args)
     
 
+    @database_invoke
     def DeleteEntries(self, root, name):
         """
         @param => str: `root`: root name set by the user in const.
@@ -116,11 +107,6 @@ class Database:
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_DELETE_NEWS, args)
-
-        # Close connection
-        self.CloseDatabase(conn)
+        self.cursor.execute(SQLITE_DELETE_NEWS, args)
