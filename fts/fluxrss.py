@@ -7,6 +7,7 @@ import requests
 import asyncio
 import discord
 import hashlib
+import time
 import os
 
 from const import CHANNEL_RSS, WAIT_UNTIL_NEW_CHECK, \
@@ -50,7 +51,7 @@ class FluxRSS:
         dict_news = dict()
 
         # Get the content of the requests
-        content = requests.get(url).text
+        content = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0"}).text
 
         # Parse the content
         parser = feedparser.parse(content)
@@ -154,6 +155,9 @@ class FluxRSS:
                     # Get class for RSS
                     rssSection = RSS(key, section)
 
+                    # Log
+                    print(f"[+] Get RSS feed for {key} - {rssSection.name} {time.strftime('%R:%S %F')}")
+
                     # Check if the cleaning database is already launched
                     if isinstance(rssSection.wait_time, str):
 
@@ -186,7 +190,7 @@ class FluxRSS:
                                 # write the news into the database
                                 self.database.AddNews(rssSection.root, rssSection.name, title, hash_description, link)
                                 #Create the discord message
-                                message = self.embeded_msg(rssSection.root, rssSection.name, title, description, link, rssSection.color)
+                                message = self.embeded_msg(rssSection.root, rssSection.name, title[:256], description, link, rssSection.color)
                                 # Check if the news match filter
                                 if rssSection.filter:
                                     if not all([
