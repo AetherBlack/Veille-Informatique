@@ -40,6 +40,8 @@ class RSS:
         """
         # Color
         self.getCustomColor()
+        # Filter
+        self.getCustomFilter()
     
 
     def getCustomColor(self):
@@ -55,3 +57,18 @@ class RSS:
                 self.color = False
         else:
             self.color = False
+
+
+    def getCustomFilter(self):
+        """
+        Get filter from the custom parameters
+        """
+        # Get custom
+        if "custom" in self.section.keys():
+            # Check filter
+            if "filter" in self.section["custom"].keys():
+                self.filter = self.section["custom"]["filter"]
+            else:
+                self.filter = False
+        else:
+            self.filter = False
