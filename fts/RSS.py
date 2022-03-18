@@ -52,7 +52,11 @@ class RSS:
         if "custom" in self.section.keys():
             # Check color
             if "color" in self.section["custom"].keys():
-                self.color = getattr(discord.Color, self.section["custom"]["color"])()
+                if self.section["custom"]["color"] in dir(discord.Color):
+                    self.color = getattr(discord.Color, self.section["custom"]["color"])()
+                else:
+                    print(f"[!] The Color {self.section['custom']['color']} doesn't exists in `discord.Color` ! Set default color instead.")
+                    self.color = False
             else:
                 self.color = False
         else:
