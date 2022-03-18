@@ -47,6 +47,9 @@ JSON_RSS = {
       "name": "Netsec",
       "description": "Netsec feed of reddit",
       "clean": "12h",
+      "custom": {
+        "color": "red"
+      },
       "link": [
         "https://www.reddit.com/r/netsec/.rss"
       ]
@@ -58,7 +61,7 @@ JSON_RSS = {
       "description": "Rapport du CERT-FR",
       "clean": False,
       "custom": {
-        "color": "red"
+        "color": "blue"
       },
       "link": [
         "https://www.cert.ssi.gouv.fr/feed/"
@@ -69,7 +72,7 @@ JSON_RSS = {
       "description": "Rapport du CERT-FR pour Microsoft",
       "clean": False,
       "custom": {
-        "color": "red",
+        "color": "blue",
         "filter": {
           "title": {
             "in": ["CERTFR-", "Microsoft"],
