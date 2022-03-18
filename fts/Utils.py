@@ -43,8 +43,10 @@ class Filter:
         """
         Check if filter match string
         """
-        # Get filter for the field
-        filter = filter[field]
+        # Check and get filter for the field
+        if field in filter.keys():
+            filter = filter[field]
+        else: return True
 
         # List of boolean
         list_bool = list()

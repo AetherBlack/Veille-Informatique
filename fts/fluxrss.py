@@ -13,6 +13,7 @@ from const import CHANNEL_RSS, WAIT_UNTIL_NEW_CHECK, \
     SQLITE_FOLDER_NAME, SQLITE_FILE_NAME
 from fts.database import Database
 from fts.cleandatabase import CleanDatabase
+from fts.Utils import Filter
 from fts.RSS import RSS
 
 class FluxRSS:
@@ -186,8 +187,13 @@ class FluxRSS:
                                 self.database.AddNews(rssSection.root, rssSection.name, title, hash_description, link)
                                 #Create the discord message
                                 message = self.embeded_msg(rssSection.root, rssSection.name, title, description, link, rssSection.color)
-                                #Send to discord
-                                await self.rss_channel.send(embed=message)
+                                # Check if the news match filter
+                                if all([
+                                    Filter.checkTitle(rssSection.filter, title),
+                                    Filter.checkDescription(rssSection.filter, description),
+                                    Filter.checkLink(rssSection.filter, link)]):
+                                    #Send to discord
+                                    await self.rss_channel.send(embed=message)
 
             # Wait until the next verification
             await asyncio.sleep(WAIT_UNTIL_NEW_CHECK)
