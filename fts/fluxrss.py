@@ -119,17 +119,31 @@ class FluxRSS:
         # Return the final Discord embeded message
         return news
 
-    def check_news(self, root: str, name: str, title: str, description: str, link: str) -> bool:
+    def check_news(self, root: str, name: str, title: str, description: str, link: str, filter: dict) -> bool:
         """
+        Check if the news is new and if they respect filter.
         @param => str: `root`: Name of the Website.
         @param => str: `name`: Name set in const. Categorie of the news
         @param => str: `title`: Title of the news.
         @param => str: `description`: Description of the news.
         @param => str: `link`: Link of the rss feed.
+        @param => dict: `filter`: Custom filter of the news.
         :returns True if the news is good.
         """
         # Check if the news is new
         is_news_new = self.is_new(root, name, title, description, link)
+
+        is_filter_good = True
+        # Check if the news match filter
+        if filter:
+            is_filter_good = all([
+                    Filter.checkTitle(filter, title),
+                    Filter.checkDescription(filter, description),
+                    Filter.checkLink(filter, link)
+                    ])
+
+        return all([is_news_new, is_filter_good])
+
 
     async def feedrss(self, json_rss: dict) -> None:
         """
@@ -179,24 +193,16 @@ class FluxRSS:
                             # Get link
                             link = value[2]
 
-                            # Check if the news is new
-                            if self.is_new(rssSection.root, rssSection.name, title, description, link):
+                            # Check if the news is good
+                            if self.check_news(rssSection.root, rssSection.name, title, description, link, rssSection.filter):
                                 # Hash the description
                                 hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
                                 # write the news into the database
                                 self.database.AddNews(rssSection.root, rssSection.name, title, hash_description, link)
-                                #Create the discord message
+                                # Create the discord message
                                 message = self.embeded_msg(rssSection.root, rssSection.name, title[:256], description, link, rssSection.color)
-                                # Check if the news match filter
-                                if rssSection.filter:
-                                    if not all([
-                                        Filter.checkTitle(rssSection.filter, title),
-                                        Filter.checkDescription(rssSection.filter, description),
-                                        Filter.checkLink(rssSection.filter, link)]):
-                                        # All filter are not good
-                                        continue
 
-                                #Send to discord
+                                # Send to discord
                                 await self.rss_channel.send(embed=message)
 
             # Wait until the next verification
