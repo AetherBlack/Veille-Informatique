@@ -1,10 +1,10 @@
 
 import discord
 
+
 class RSS:
 
-
-    def __init__(self, root: str, section: dict):
+    def __init__(self, root: str, section: dict) -> None:
         """
         @param => str: `root`: Root name of the section set in `const/`
         @param => dict: `section`: Sections of the root name
@@ -16,8 +16,7 @@ class RSS:
         # Get all
         self.getInformationsFromSection()
 
-
-    def getInformationsFromSection(self):
+    def getInformationsFromSection(self) -> None:
         """
         Get informations from `self.section`
         """
@@ -33,8 +32,7 @@ class RSS:
         # Get link
         self.link = self.section["link"]
 
-
-    def getCustomParameters(self):
+    def getCustomParameters(self) -> None:
         """
         Get custom parameters from `self.section`
         """
@@ -42,9 +40,8 @@ class RSS:
         self.getCustomColor()
         # Filter
         self.getCustomFilter()
-    
 
-    def getCustomColor(self):
+    def getCustomColor(self) -> None:
         """
         Get color from the custom parameters
         """
@@ -62,8 +59,7 @@ class RSS:
         else:
             self.color = False
 
-
-    def getCustomFilter(self):
+    def getCustomFilter(self) -> None:
         """
         Get filter from the custom parameters
         """
