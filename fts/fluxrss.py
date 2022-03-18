@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from urllib.parse import urlparse
-
 import feedparser
 import requests
 import asyncio
@@ -17,6 +15,7 @@ from fts.cleandatabase import CleanDatabase
 from fts.Utils import Filter
 from fts.RSS import RSS
 
+
 class FluxRSS:
 
     """
@@ -24,7 +23,7 @@ class FluxRSS:
     Get news of the feedrss url parse in args.
     """
 
-    def __init__(self, bot, cwd):
+    def __init__(self, bot: discord.Client, cwd: str) -> str:
         """
         Initialize class
         @param => DiscordBot: `bot`: Discord Bot Instance.
@@ -40,13 +39,12 @@ class FluxRSS:
         self.db_path = os.path.join(self.cwd, SQLITE_FOLDER_NAME)
         self.database = Database(self.db_path, SQLITE_FILE_NAME)
 
-
-    def get_news(self, url):
+    def get_news(self, url: str) -> dict:
         """
         Get the news of the rss feed.
         @param => str: `url`: url of the rss feed.
-        Return dict with an int index key and
-        title, description and link in a list for the value.
+        :returns dict with an int index key and
+            title, description and link in a list for the value.
         """
         dict_news = dict()
 
@@ -81,21 +79,20 @@ class FluxRSS:
         # Return the dict
         return dict_news
 
-
-    def is_new(self, root, name, title, description, link):
+    def is_new(self, root: str, name: str, title: str, description: str, link: str) -> bool:
         """
-        Return True if the news in the feed is new.
+        @param => str: `root`: Root name of the news.
         @param => str: `title`: Title of the news.
         @param => str: `description`: Description of the news.
         @param => str: `link`: Link of the rss feed.
+        :returns True if the news in the feed is new.
         """
         # Hash description
         hash_description = hashlib.sha256(bytes(description, "utf-8", errors="ignore")).hexdigest()
         # Return the check of the query
         return not self.database.isNewsExists(root, name, title, hash_description, link)
 
-
-    def embeded_msg(self, root, name, title, content, link, color):
+    def embeded_msg(self, root: str, name: str, title: str, content: str, link: str, color: discord.Colour) -> discord.Embed:
         """
         Create the embeded message and send it to discord.
         @param => str: `root`: Name of the Website.
@@ -103,10 +100,11 @@ class FluxRSS:
         @param => str: `title`: Title of the news.
         @param => str: `content`: Content description of the news.
         @param => str: `link`: Link of the news.
-        @param => discord.Color: `color`: Color for the left panel.
+        @param => discord.Colour: `color`: Color for the left panel.
+        :returns a embeded discord messsage
         """
         # Set the Name, description and color on the left
-        news = discord.Embed(title="{0} - {1}".format(root, name), description="News :", color=(color or 0x00ff00))
+        news = discord.Embed(title=f"{root} - {name}", description="News :", color=(color or 0x00ff00))
 
         #Set bot name and profil picture
         news.set_author(name=self.bot_username, icon_url=self.bot.user.avatar_url)
@@ -116,26 +114,24 @@ class FluxRSS:
         news.add_field(name=title, value=content[:1024], inline=False)
 
         #Show the bot username in footer
-        news.set_footer(text="Generate by @{0}".format(self.bot_username))
+        news.set_footer(text=f"Generate by @{self.bot_username}")
 
         # Return the final Discord embeded message
         return news
-    
 
     def check_news(self, root: str, name: str, title: str, description: str, link: str) -> bool:
         """
-        Return True if the news in good.
         @param => str: `root`: Name of the Website.
         @param => str: `name`: Name set in const. Categorie of the news
         @param => str: `title`: Title of the news.
         @param => str: `description`: Description of the news.
         @param => str: `link`: Link of the rss feed.
+        :returns True if the news is good.
         """
         # Check if the news is new
         is_news_new = self.is_new(root, name, title, description, link)
 
-
-    async def feedrss(self, json_rss):
+    async def feedrss(self, json_rss: dict) -> None:
         """
         Get the news and send it to the channel.
         @param => dict: `json_rss`: JSON data of the RSS Flux.
