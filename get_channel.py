@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
-from discord.ext import commands, tasks
-
-import sys
+from discord.ext import commands
 
 from const import TOKEN
 
@@ -26,6 +24,19 @@ if __name__ == "__main__":
     bot.run(TOKEN)
     
     for index, guild in enumerate(channel):
+        # Log Guild index
         print("[+] Guild {0}".format(index))
-        for value in guild:
-            print("\t", value.name, value.id)
+
+        # For channel in guild
+        for chann in guild:
+            # Check if the channel is a category
+            if chann.category is None:
+                print(f"\t{chann.name} - {chann.id}")
+
+                # For each channel in guild
+                for value in guild:
+                    # Check if the channel is a subchannel of the category for the guild
+                    if str(value.category) == str(chann.name):
+                        print(f"\t\t{value.name} - {value.id}")
+            else:
+                continue
