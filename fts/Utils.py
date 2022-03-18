@@ -17,11 +17,6 @@ def database_invoke(fn):
 
 class Filter:
 
-    def __init__(self, filter: dict) -> None:
-        """
-        Convert dict filter to literal string.
-        """
-    
     @staticmethod
     def checkTitle(filter: dict, title: str) -> bool:
         """
@@ -65,14 +60,14 @@ class Filter:
             else:
                 print(f"[!] '{keys}' is not implemented !")
         
-        return any(list_bool)
+        return all(list_bool)
 
     @staticmethod
     def checkFilterInMethod(list_string: list, field: str) -> bool:
         """
         Check if each string in List[string] are in provided field string.
         """
-        return any([True if string in field else False for string in list_string])
+        return all([True if string in field else False for string in list_string])
 
 
     @staticmethod
@@ -80,12 +75,12 @@ class Filter:
         """
         Check if each string in List[string] are not in provided field string.
         """
-        return any([True if string not in field else False for string in list_string])
+        return all([True if string not in field else False for string in list_string])
 
     @staticmethod
     def checkFilterMatchMethod(list_string: list, field: str) -> bool:
         """
         Check if each string in List[string] match (regex) the provided field string.
         """
-        return any([True if re.match(string, field) is not None else False for string in list_string])
+        return all([True if re.match(string, field) is not None else False for string in list_string])
 
