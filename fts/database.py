@@ -28,6 +28,11 @@ class Database:
         if not os.path.isfile(self.full_path):
             # If not create database
             self.CreateDatabase()
+        # Check if the database is empty
+        else:
+            with open(self.full_path, "rb") as f:
+                if f.read(2) == b"\n":
+                    self.CreateDatabase()
 
 
     def ConnectDatabase(self):
