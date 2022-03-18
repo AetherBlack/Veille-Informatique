@@ -4,25 +4,32 @@ from discord.ext import commands
 
 from const import TOKEN
 
-# Prefix du bot
+
+# Bot prefix
 bot = commands.Bot(command_prefix='!')
 
-# Au lancement
+# When the bot is ready after launch
 @bot.event
 async def on_ready():
-    print("Logged in as {0}\n{1}".format(bot.user.name, bot.user.id))
+    print(f"Logged in as {bot.user.name}\n{bot.user.id}")
     print("------------------")
-    # Recuperation de l'id des channels
+
+    # Get id of each channel
     global channel
     channel = list()
+
+    # For each guild were the bot is in
     for guild in bot.guilds:
-        #print(guild.channels)
         channel.append(guild.channels)
+
+    # Close the bot connection
     await bot.close()
 
 if __name__ == "__main__":
+    # Launch the bot
     bot.run(TOKEN)
-    
+
+    # For each guild
     for index, guild in enumerate(channel):
         # Log Guild index
         print("[+] Guild {0}".format(index))
