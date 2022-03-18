@@ -188,12 +188,16 @@ class FluxRSS:
                                 #Create the discord message
                                 message = self.embeded_msg(rssSection.root, rssSection.name, title, description, link, rssSection.color)
                                 # Check if the news match filter
-                                if all([
-                                    Filter.checkTitle(rssSection.filter, title),
-                                    Filter.checkDescription(rssSection.filter, description),
-                                    Filter.checkLink(rssSection.filter, link)]):
-                                    #Send to discord
-                                    await self.rss_channel.send(embed=message)
+                                if rssSection.filter:
+                                    if not all([
+                                        Filter.checkTitle(rssSection.filter, title),
+                                        Filter.checkDescription(rssSection.filter, description),
+                                        Filter.checkLink(rssSection.filter, link)]):
+                                        # All filter are not good
+                                        continue
+
+                                #Send to discord
+                                await self.rss_channel.send(embed=message)
 
             # Wait until the next verification
             await asyncio.sleep(WAIT_UNTIL_NEW_CHECK)
