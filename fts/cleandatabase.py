@@ -6,13 +6,14 @@ import time
 
 from fts.database import Database
 
+
 class CleanDatabase(Thread):
 
     """
     Instance of CleanDatabase
     """
 
-    def __init__(self, root, name, wait_time, db_path, db_name):
+    def __init__(self, root: str, name: str, wait_time: int, db_path: str, db_name: str):
         """
         @param => str: `root`: root name set in const.
         @param => str: `name`: name set in the subsection of root.
