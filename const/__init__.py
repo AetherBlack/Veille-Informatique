@@ -14,6 +14,9 @@ JSON_RSS = {
       "name": "WPA-3",
       "description": "WPA-3 English Feed",
       "clean": "1d",
+      "custom": {
+        "color": "white"
+      },
       "link": [
         "https://www.google.com/alerts/feeds/10044275366631447452/5208661666063475899",
       ]
@@ -22,6 +25,17 @@ JSON_RSS = {
       "name": "CyberSecurity",
       "decription": "CyberSecurity English & French Feed",
       "clean": "1d",
+      "custom": {
+        "color": "white",
+        "filter": {
+          "title": {
+            "not in": ["offre", "stage", "emploi", "jobs"]
+          },
+          "description": {
+            "not in": ["LinkedIn"]
+          },
+        },
+      },
       "link": [
         "https://www.google.fr/alerts/feeds/02095771238174224890/10101746411290367862",# English
         "https://www.google.fr/alerts/feeds/02095771238174224890/2639999938357813092"# French
@@ -33,6 +47,9 @@ JSON_RSS = {
       "name": "Netsec",
       "description": "Netsec feed of reddit",
       "clean": "12h",
+      "custom": {
+        "color": "red"
+      },
       "link": [
         "https://www.reddit.com/r/netsec/.rss"
       ]
@@ -44,7 +61,31 @@ JSON_RSS = {
       "description": "Rapport du CERT-FR",
       "clean": False,
       "custom": {
-        "color": "red"
+        "color": "blue"
+      },
+      "link": [
+        "https://www.cert.ssi.gouv.fr/feed/"
+      ]
+    },
+    {
+      "name": "CERT-FR Microsoft",
+      "description": "Rapport du CERT-FR pour Microsoft",
+      "clean": False,
+      "custom": {
+        "color": "blue",
+        "filter": {
+          "title": {
+            "in": ["CERTFR-", "Microsoft"],
+            "not in": ["Edge"],
+            "match": [".*CERTFR-[0-9]{4}AVI.*Microsoft"]
+          },
+          "description": {
+            "in": ["Microsoft"],
+          },
+          "link": {
+            "not in": ["http://"],
+          }
+        }
       },
       "link": [
         "https://www.cert.ssi.gouv.fr/feed/"

@@ -2,9 +2,11 @@
 import sqlite3
 import os
 
+from fts.Utils import database_invoke
 from const import SQLITE_CREATE_DATABASE, \
     SQLITE_SELECT_NEWS_EXISTS, SQLITE_INSERT_NEWS, \
         SQLITE_DELETE_NEWS
+
 
 class Database:
 
@@ -12,7 +14,7 @@ class Database:
     Instance of Database
     """
 
-    def __init__(self, path, db_name):
+    def __init__(self, path: str, db_name: str) -> None:
         """
         Instance few variables and create database if not exists
         @param => str: `path`: Path to the folder who the database is or are going to was write
@@ -27,69 +29,65 @@ class Database:
         if not os.path.isfile(self.full_path):
             # If not create database
             self.CreateDatabase()
+        # Check if the database is empty
+        else:
+            with open(self.full_path, "rb") as f:
+                if f.read(2) == b"\n":
+                    self.CreateDatabase()
 
-
-    def ConnectDatabase(self):
+    def ConnectDatabase(self) -> None:
         """
         Connect to the database and set a cursor
         """
-        conn = sqlite3.connect(self.full_path)
-        cursor = conn.cursor()
-        return conn, cursor
+        self.conn = sqlite3.connect(self.full_path)
+        self.cursor = self.conn.cursor()
 
-
-    def CloseDatabase(self, conn):
+    def CloseDatabase(self) -> None:
         """
         Commit and close connection to the database
         """
         # Save the changes
-        conn.commit()
+        self.conn.commit()
 
         # Close the connection
-        conn.close()
+        self.conn.close()
 
+        # Unset variable
+        self.conn, self.cursor = None, None
 
-    def CreateDatabase(self):
+    @database_invoke
+    def CreateDatabase(self) -> None:
         """
         Create the database using the full_path variable
         """
-        # Get connection and cursor 
-        conn, cursor = self.ConnectDatabase()
-
         # Create table
-        cursor.execute(SQLITE_CREATE_DATABASE)
+        self.cursor.execute(SQLITE_CREATE_DATABASE)
 
-        # Close the connection
-        self.CloseDatabase(conn)
-
-
-    def isNewsExists(self, root, name, title, hash_description, link):
+    @database_invoke
+    def isNewsExists(self, root: str, name: str, title: str, hash_description: str, link: str) -> bool:
         """
-        Return true if the news exists
+        @param => str: `root`: Root `name` of the news.
+        @param => str: `name`: Name of the category for the news.
         @param => str: `title`: Title of the news.
         @param => str: `hash_description`: sha256 hexdigest of the description.
         @param => str: `link`: Link of the news.
+        :returns True if the news exists
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
+        self.cursor.execute(SQLITE_SELECT_NEWS_EXISTS, args)
         # Get the response
-        result = cursor.fetchone()
-
-        # Close connection
-        self.CloseDatabase(conn)
+        result = self.cursor.fetchone()
 
         # Check the result
         if result is None:
             return False
         return True
 
-
-    def AddNews(self, root, name, title, hash_description, link):
+    @database_invoke
+    def AddNews(self, root: str, name: str, title: str, hash_description: str, link: str) -> None:
         """
         @param => str: `root`: root name set in const.
         @param => str: `name`: Name set in const.
@@ -99,28 +97,18 @@ class Database:
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_INSERT_NEWS, args)
+        self.cursor.execute(SQLITE_INSERT_NEWS, args)
 
-        # Close connection
-        self.CloseDatabase(conn)
-    
-
-    def DeleteEntries(self, root, name):
+    @database_invoke
+    def DeleteEntries(self, root: str, name: str) -> None:
         """
         @param => str: `root`: root name set by the user in const.
         @param => str: `name`: name of the subsection set by the user in const.
         """
         # Arguments
         args = tuple(locals().values())[1:]
-        # Connect to the database
-        conn, cursor = self.ConnectDatabase()
 
         # Execute the query
-        cursor.execute(SQLITE_DELETE_NEWS, args)
-
-        # Close connection
-        self.CloseDatabase(conn)
+        self.cursor.execute(SQLITE_DELETE_NEWS, args)

@@ -9,11 +9,11 @@ import os
 from const import TOKEN, JSON_RSS
 from fts.fluxrss import FluxRSS
 
-# Prefix of the bot
+
+# Bot prefix
 bot = commands.Bot(command_prefix='!')
 
-
-# on bot ready launch this function
+# When the bot is ready after launch
 @bot.event
 async def on_ready():
     print("Logged in as {0}\n{1}".format(bot.user.name, bot.user.id))
@@ -37,7 +37,7 @@ async def on_ready():
 
 if __name__ == "__main__":
     # Add Current Working Directory on the path
-    sys.path += [os.getcwd()]
+    sys.path.append(os.getcwd())
 
     # Launch the bot
     bot.run(TOKEN)

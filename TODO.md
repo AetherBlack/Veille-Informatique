@@ -1,12 +1,6 @@
 # Veille Informatique
 
-## V1 !
-
-Tester le code avant la sortie de la v1.
-
-### Code
-
-Revoir les commentaires des fonctions.
+## V1
 
 #### readme.md
 
